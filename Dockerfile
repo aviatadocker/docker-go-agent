@@ -1,7 +1,3 @@
-# Dockerfile for ThoughtWorks Go Agent (http://www.go.cd)
-#
-# http://github.com/patforna/docker/go-agent
-
 FROM customercentrix/java8
 
 # http://download.go.cd/gocd-deb/go-agent-14.2.0-377.deb
