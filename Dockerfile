@@ -2,6 +2,8 @@ FROM customercentrix/java8
 
 # Thoughtworks Go 14.2 Agent
 
+ADD ./wrapdocker /usr/local/bin/wrapdocker
+
 RUN  date -u +"%Y-%m-%d %H:%M:%S" && apt-get update \
   && date -u +"%Y-%m-%d %H:%M:%S" && apt-get -y upgrade \
   && date -u +"%Y-%m-%d %H:%M:%S" && apt-get -y install mysql-client-5.6 phantomjs ant ivy \
@@ -18,10 +20,9 @@ RUN  date -u +"%Y-%m-%d %H:%M:%S" && apt-get update \
   && date -u +"%Y-%m-%d %H:%M:%S" && sed -i '/.*GO_SERVER_PORT.*/d' /etc/default/go-agent \
   && date -u +"%Y-%m-%d %H:%M:%S" && sed -i 's/DAEMON=Y/DAEMON=N/' /etc/default/go-agent \
   && date -u +"%Y-%m-%d %H:%M:%S" && sed -i 's/su -/su -p/' /etc/init.d/go-agent \
+  && date -u +"%Y-%m-%d %H:%M:%S" && chmod +x /usr/local/bin/wrapdocker \
+  && date -u +"%Y-%m-%d %H:%M:%S" && mkdir /scratch \
   && date -u +"%Y-%m-%d %H:%M:%S"
-
-ADD ./wrapdocker /usr/local/bin/wrapdocker
-RUN chmod +x /usr/local/bin/wrapdocker
 
 VOLUME /var/lib/docker
 CMD wrapdocker && su go -c '/etc/init.d/go-agent start'
