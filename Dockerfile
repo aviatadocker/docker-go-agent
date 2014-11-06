@@ -20,6 +20,9 @@ RUN  date -u +"%Y-%m-%d %H:%M:%S" && apt-get update \
   && date -u +"%Y-%m-%d %H:%M:%S" && sed -i '/.*GO_SERVER_PORT.*/d' /etc/default/go-agent \
   && date -u +"%Y-%m-%d %H:%M:%S" && sed -i 's/DAEMON=Y/DAEMON=N/' /etc/default/go-agent \
   && date -u +"%Y-%m-%d %H:%M:%S" && sed -i 's/su -/su -p/' /etc/init.d/go-agent \
+  && date -u +"%Y-%m-%d %H:%M:%S" && sed -i 's/pkill -u go/pkill/' /etc/init.d/go-agent \
+  && date -u +"%Y-%m-%d %H:%M:%S" && sed -i 's/pgrep -u go/pgrep/' /etc/init.d/go-agent \
+  && date -u +"%Y-%m-%d %H:%M:%S" && sed -i 's/su -p go/su/' /etc/init.d/go-agent \
   && date -u +"%Y-%m-%d %H:%M:%S" && chmod +x /usr/local/bin/wrapdocker \
   && date -u +"%Y-%m-%d %H:%M:%S" && mkdir /scratch \
   && date -u +"%Y-%m-%d %H:%M:%S"
