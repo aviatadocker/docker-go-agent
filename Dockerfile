@@ -22,6 +22,7 @@ RUN  date -u +"%Y-%m-%d %H:%M:%S" && apt-get update \
   && date -u +"%Y-%m-%d %H:%M:%S" && sed -i 's/su -/su -p/' /etc/init.d/go-agent \
   && date -u +"%Y-%m-%d %H:%M:%S" && chmod +x /usr/local/bin/wrapdocker \
   && date -u +"%Y-%m-%d %H:%M:%S" && mkdir /scratch \
+  && date -u +"%Y-%m-%d %H:%M:%S" && chown go.go /scratch \
   && date -u +"%Y-%m-%d %H:%M:%S"
 
 VOLUME /var/lib/docker
